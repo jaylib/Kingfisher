@@ -100,8 +100,10 @@ public struct KFImage: SwiftUI.View {
                 }
             }
         }.onAppear { [weak binder] in
-            if !binder?.loadingOrSuccessed {
-                binder?.start()
+            guard let binder = binder else { return }
+        
+            if !binder.loadingOrSuccessed {
+                binder.start()
             }
         }
     }
